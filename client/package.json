@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel watch build src/*"
+    "start": "parcel watch src/content.ts src/background.ts"
   },
   "keywords": [],
   "author": "",
