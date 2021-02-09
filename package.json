@@ -4,12 +4,15 @@
   "description": "A chrome extension where users can raise cats based off their site visiting activity",
   "main": "index.js",
   "scripts": {
-    "db:make": "pg-bump create",
-    "db:up": "pg-bump up",
-    "db:down": "pg-bump down",
-    "services:start": "docker-compose up -d --build",
+    "db:make": "docker-compose exec database npm run db:make",
+    "db:up": "docker-compose exec database npm run db:up",
+    "db:down": "docker-compose exec database npm run db:down",
+    "services:start": "docker-compose up --build",
     "services:stop": "docker-compose down",
-    "db:shell": ". ./server/.env && docker-compose exec database psql $DATABASE_URL"
+    "db:shell": ". ./server/.env && docker-compose exec database psql $DATABASE_URL",
+    "client:shell": "docker-compose exec client sh",
+    "server:shell": "docker-compose exec server sh",
+    "database:shell": "docker-compose exec database sh"
   },
   "repository": {
     "type": "git",
@@ -21,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/uzair-ashraf/raise-a-kitty/issues"
   },
-  "homepage": "https://github.com/uzair-ashraf/raise-a-kitty#readme",
-  "devDependencies": {
-    "pg-bump": "^3.0.0"
-  }
+  "homepage": "https://github.com/uzair-ashraf/raise-a-kitty#readme"
 }
