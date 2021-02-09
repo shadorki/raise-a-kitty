@@ -6,3 +6,23 @@ services:
       dockerfile: ./Dockerfile
     volumes:
       - ./client:/usr/src
+
+  server:
+    depends_on:
+      - database
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./server:/usr/src
+    ports:
+      - 3000:3000
+
+  database:
+    image: postgres:9.6
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: raisekitties
