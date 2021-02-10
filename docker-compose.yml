@@ -10,6 +10,7 @@ services:
   server:
     depends_on:
       - database
+    env_file: ./server/.env
     build:
       context: ./server
       dockerfile: ./Dockerfile
@@ -20,12 +21,6 @@ services:
 
   database:
     image: postgres:9.6
-    tty: true
-    build:
-      context: ./database
-      dockerfile: ./Dockerfile
-    volumes:
-      - ./database:/usr/src
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
