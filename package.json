@@ -7,7 +7,7 @@
     "db:make": "docker-compose exec server npm run db:make",
     "db:up": "docker-compose exec server npm run db:up",
     "db:down": "docker-compose exec server npm run db:down",
-    "services:start": "docker-compose up --build",
+    "services:start": "docker-compose up -d --build",
     "services:stop": "docker-compose down",
     "db:shell": ". ./server/.env && docker-compose exec database psql $DATABASE_URL",
     "client:shell": "docker-compose exec client sh",
