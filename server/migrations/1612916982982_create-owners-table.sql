@@ -5,7 +5,7 @@ CREATE TABLE owners (
   email varchar(255) not null,
   secret varchar(255),
   primary key (owner_id)
-)
+);
 ---
-DROP TABLE owners
+DROP TABLE owners;
 -- down
