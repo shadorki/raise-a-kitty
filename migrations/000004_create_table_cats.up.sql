@@ -1,4 +1,3 @@
--- up
 CREATE TABLE cats (
   cat_id uuid not null default uuid_generate_v4(),
   breed_id uuid not null,
@@ -15,7 +14,3 @@ CREATE TABLE cats (
     references owners (owner_id)
     on delete cascade
 );
----
-DROP TABLE cats;
--- down
-
