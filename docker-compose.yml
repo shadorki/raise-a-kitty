@@ -14,8 +14,8 @@ services:
     build:
       context: ./server
       dockerfile: ./Dockerfile
-    volumes:
-      - ./server:/usr/src
+    # volumes:
+    #   - ./server:/usr/src
     ports:
       - 3000:3000
 
