@@ -33,10 +33,11 @@ func (d *DB) Close() {
 
 func (d *DB) connect(retries int) (*pgx.Conn, error) {
 	conn, err := pgx.Connect(context.Background(), os.Getenv("DATABASE_URL"))
+
 	if err != nil {
 		if retries != 0 {
 			fmt.Printf("Failed to connect to database, trying %d more times \n", retries)
-			time.Sleep(time.Millisecond * 3333)
+			time.Sleep(time.Second * 3)
 			return d.connect(retries - 1)
 		}
 		return nil, fmt.Errorf("unable to connect to database: %v", err)

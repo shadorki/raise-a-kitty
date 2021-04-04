@@ -3,7 +3,7 @@ import { UserProfile } from '../background/user'
 export class Api {
   private static BaseUrl = process.env.API_URL
   private static Url(path: string): string {
-    return `${this.BaseUrl}/${path}`
+    return `${this.BaseUrl}${path}`
   }
   static async Authenticate(profile: UserProfile) {
     const response = await fetch(this.Url('/auth'), {
