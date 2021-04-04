@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel watch src/content.ts src/background.ts"
+    "start": "yarn clean && node -r dotenv/config && yarn watch:all",
+    "build": "yarn clean && node -r dotenv/config && && yarn build:all",
+    "build:all": "yarn build:background & yarn build:content",
+    "build:content": "parcel build src/content/* -o content.js",
+    "build:background": "parcel build src/background/* -o background.js",
+    "watch:all": "yarn watch:background & yarn watch:content",
+    "watch:content": "parcel watch src/content/* -o content.js",
+    "watch:background": "parcel watch src/background/* -o background.js",
+    "clean": "rm -rf dist"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +22,8 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.129",
+    "@types/node": "^14.14.37",
+    "dotenv": "^8.2.0",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.5.1",
     "typescript": "^4.1.3"
