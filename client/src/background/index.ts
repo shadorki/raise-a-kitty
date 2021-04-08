@@ -1,13 +1,14 @@
-import User from './user'
-
+import State from './state'
+import Shelter from './shelter'
 class Background {
-  public user: User
+  private _state: State
+  private _shelter: Shelter
   constructor() {
-    this.user = null
+    this._state = new State()
+    this._shelter = null
   }
   async initialize(): Promise<void> {
-    this.user = await User.Initialize()
-    await Api.Authenticate(this.user.profile)
+    this._shelter = await Shelter.initialize()
   }
 }
 
