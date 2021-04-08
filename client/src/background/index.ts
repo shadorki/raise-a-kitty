@@ -1,5 +1,4 @@
 import User from './user'
-import { Api } from '../common'
 
 class Background {
   public user: User
