@@ -6,12 +6,12 @@
   "scripts": {
     "start": "yarn clean && yarn watch:all",
     "build": "yarn clean && && yarn build:all",
-    "build:all": "yarn build:background & yarn build:content",
-    "build:content": "parcel build src/content/* -o content.js",
-    "build:background": "parcel build src/background/* -o background.js",
-    "watch:all": "yarn watch:background & yarn watch:content",
-    "watch:content": "parcel watch src/content/* -o content.js",
-    "watch:background": "parcel watch src/background/* -o background.js",
+    "build:all": "yarn build:background & yarn build:popup",
+    "build:popup": "parcel build src/popup/index.ts -o popup.js",
+    "build:background": "parcel build src/background/index.ts -o background.js",
+    "watch:all": "yarn watch:background & yarn watch:popup",
+    "watch:popup": "parcel watch src/popup/index.tsx -o popup.js",
+    "watch:background": "parcel watch src/background/index.ts -o background.js",
     "clean": "rm -rf dist"
   },
   "keywords": [],
@@ -23,6 +23,8 @@
   "devDependencies": {
     "@types/chrome": "0.0.129",
     "@types/node": "^14.14.37",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.5.1",
     "typescript": "^4.1.3"

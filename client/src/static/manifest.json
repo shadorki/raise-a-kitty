@@ -1,11 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "Getting Started Example",
-  "version": "1.0",
-  "description": "Build an Extension!",
-  "permissions": ["identity", "identity.email"],
+  "name": "Raise a Kitty",
+  "version": "0.0.1",
+  "description": "Raise a kitty in your browser!",
+  "permissions": ["declarativeContent"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
   }
 }

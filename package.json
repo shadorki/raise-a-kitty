@@ -4,14 +4,7 @@
   "description": "A chrome extension where users can raise cats based off their site visiting activity",
   "main": "index.js",
   "scripts": {
-    "services:start": "docker-compose up --build",
-    "services:stop": "docker-compose down",
-    "db:shell": ". ./server/.env && docker-compose exec database psql $DATABASE_URL",
-    "client:shell": "docker-compose exec client sh",
-    "server:shell": "docker-compose exec server sh",
-    "migrate:new": "migrate create -ext sql -dir migrations -seq",
-    "migrate:up": "migrate -database postgres://postgres:postgres@localhost:5432/raisekitties?sslmode=disable -path migrations up",
-    "migrate:down": "migrate -database postgres://postgres:postgres@localhost:5432/raisekitties?sslmode=disable -path migrations down"
+    "client:shell": "docker-compose exec client sh"
   },
   "repository": {
     "type": "git",
