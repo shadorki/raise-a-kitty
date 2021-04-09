@@ -3,7 +3,7 @@
   "name": "Raise a Kitty",
   "version": "0.0.1",
   "description": "Raise a kitty in your browser!",
-  "permissions": ["declarativeContent"],
+  "permissions": ["storage"],
   "background": {
     "scripts": ["background.js"]
   },

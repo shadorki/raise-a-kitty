@@ -3,15 +3,15 @@ import Shelter from './shelter'
 class Background {
   private _state: State
   private _shelter: Shelter
-  constructor() {
-    this._state = new State()
-    this._shelter = null
+  constructor(state: State, shelter: Shelter) {
+    this._state = state
+    this._shelter = shelter
   }
-  async initialize(): Promise<void> {
-    this._shelter = await Shelter.initialize()
+  public static async Initialize(): Promise<Background> {
+    const state = await State.Initialize()
+    const shelter = await Shelter.Initialize()
+    return new this(state, shelter)
   }
 }
-
-const background = new Background()
-
-background.initialize()
+    // @ts-ignore
+window.background = Background.Initialize()

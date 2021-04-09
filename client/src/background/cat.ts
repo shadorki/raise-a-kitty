@@ -15,7 +15,7 @@ export default class Cat {
   get age(): number {
     return Math.ceil((Date.now() - this._age) / 1000 / 60 / 60);
   }
-  adopt(name: string): void {
+  public adopt(name: string): void {
     this._name = name
     this._age = Date.now()
   }
