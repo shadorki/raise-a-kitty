@@ -7,11 +7,12 @@ class Background {
     this._state = state
     this._shelter = shelter
   }
-  public static async Initialize(): Promise<Background> {
+  public static async Initialize(): Promise<void> {
     const state = await State.Initialize()
     const shelter = await Shelter.Initialize()
-    return new this(state, shelter)
+
+    // @ts-ignore
+    window.background = new this(state, shelter)
   }
 }
-    // @ts-ignore
-window.background = Background.Initialize()
+Background.Initialize()
