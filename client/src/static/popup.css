@@ -9,3 +9,6 @@ div.layout {
   justify-content: center;
   align-items: center;
 }
+.loading-kitty {
+  transition-duration: 200ms;
+}
