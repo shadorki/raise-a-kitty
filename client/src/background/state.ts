@@ -1,17 +1,23 @@
 import Cat from './cat'
 import { Storage } from './enums'
-
-
-interface DeserializedState {
-  _cats: []
-}
+import { DeserializedState } from '../common'
+import { Views } from '../common/enums/views';
 
 export default class State {
+  public view: Views
   private _cats: Cat[];
   constructor() {
+    this.view = Views.HOME
     this._cats = []
   }
+  public setView(view: Views): void {
+    this.view = view
+  }
+  public addCat(cat: Cat): void {
+    this._cats.push(cat)
+  }
   public async save(): Promise<void> {
+    console.log(this)
     return new Promise((resolve, reject) => chrome.storage.sync.set({
       [Storage.STATE]: this
     }, () => {
@@ -24,11 +30,14 @@ export default class State {
       [key: string]: DeserializedState
     } = await new Promise(resolve => chrome.storage.sync.get(Storage.STATE, resolve))
     console.log(data[Storage.STATE])
-    if(!data[Storage.STATE]) return new this()
-    return this.InitializeFromSerialized(data[Storage.STATE])
+    if (!data[Storage.STATE]) return new this()
+    return new this().initializeFromSerialized(data[Storage.STATE])
   }
-  public static InitializeFromSerialized(state: DeserializedState): State {
-    console.log(state)
-    return new this()
+  public initializeFromSerialized(state: DeserializedState): State {
+    const { _cats, view } = state
+    const cats = _cats.map(c => Cat.InitializeFromSerialized(c))
+    this._cats = cats
+    this.view = view
+    return this
   }
 }

@@ -1,3 +1,6 @@
 export enum Messages {
-  UPDATE_STATE = "UPDATE_STATE"
+  ADOPT_CAT = "ADOPT_CAT",
+  GET_STATE = "GET_STATE",
+  UPDATE_STATE = "UPDATE_STATE",
+  SET_VIEW = "SET_VIEW"
 }

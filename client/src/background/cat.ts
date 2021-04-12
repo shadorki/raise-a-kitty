@@ -1,5 +1,6 @@
 import Breed from './breed';
 import { Moods } from './enums'
+import { DeserializedCat } from '../common'
 
 export default class Cat {
   private _name: string;
@@ -19,4 +20,9 @@ export default class Cat {
     this._name = name
     this._age = Date.now()
   }
+  public static InitializeFromSerialized(cat: DeserializedCat): Cat {
+    const newCat = new this(cat._breed)
+    Object.assign(newCat, cat)
+    console.log(newCat)
+    return newCat
 }

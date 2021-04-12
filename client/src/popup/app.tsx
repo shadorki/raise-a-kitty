@@ -1,10 +1,43 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
-const App: FC = () => {
+import { Messages, Views } from '../common/enums'
+import { DeserializedState, Message } from '../common'
+import { Layout, Loading } from './components'
+
+const App: FC = (): JSX.Element => {
+  const [state, setState] = useState<DeserializedState>(new DeserializedState())
+
+  const setView = async (view: Views): Promise<void> => {
+      setState(
+        await new Message(
+          Messages.SET_VIEW,
+          view
+        ).send()
+      )
+  }
+
+  useEffect((): void => {
+    (async () => {
+      setState(await new Message(Messages.GET_STATE).send())
+    })()
+  }, [])
+  console.log(state)
+  const { view } = state
   return (
-    <div>
-      Hello world!
-    </div>
+    <Layout>
+      {
+        (
+          () => ({
+            [Views.LOADING]: (): JSX.Element => (
+              <Loading/>
+            ),
+            [Views.HOME]: (): JSX.Element => (
+              null
+            )
+          }[view]())
+        )()
+      }
+    </Layout>
   )
 }
 

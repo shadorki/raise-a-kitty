@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+div.layout {
+  border: 2px solid #ff0000;
+  height: 600px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
