@@ -6,11 +6,9 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 
 export const Loading: FC = (): JSX.Element => {
   const [rotation, setRotation] = useState<number>(0)
-  // Rotation doesnt change?
   useEffect(() => {
     const id = window.setInterval(() => {
-      console.log(rotation)
-      setRotation(rotation + 360)
+      setRotation(r => r + 360)
     }, 1000)
     return () => window.clearInterval(id)
   }, [])

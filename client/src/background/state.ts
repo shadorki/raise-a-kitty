@@ -7,7 +7,7 @@ export default class State {
   public view: Views
   private _cats: Cat[];
   constructor() {
-    this.view = Views.LOADING
+    this.view = Views.HOME
     this._cats = []
   }
   public setView(view: Views): void {

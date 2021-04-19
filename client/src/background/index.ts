@@ -22,7 +22,7 @@ class Background {
         this.state.view = view as Views
         await this.state.save()
         sendResponse(this.state)
-      }
+      },
       [Messages.GET_STATE]: async () => {
         sendResponse(this.state)
       },

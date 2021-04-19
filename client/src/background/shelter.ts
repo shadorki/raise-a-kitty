@@ -11,7 +11,7 @@ export default class Shelter {
     const breeds: Breed[] = []
     const { width, height }: HTMLImageElement = await new Promise((resolve, reject) => {
       const img = new Image()
-      img.src = chrome.runtime.getURL('../assets/cats.png')
+      img.src = chrome.runtime.getURL('../assets/images/cats.png')
       img.onload = () => resolve(img)
       img.onerror = reject
     })

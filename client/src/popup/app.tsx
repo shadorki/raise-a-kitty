@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 
 import { Messages, Views } from '../common/enums'
 import { DeserializedState, Message } from '../common'
-import { Layout, Loading } from './components'
+import { Home, Layout, Loading } from './components'
 
 const App: FC = (): JSX.Element => {
   const [state, setState] = useState<DeserializedState>(new DeserializedState())
@@ -22,7 +22,7 @@ const App: FC = (): JSX.Element => {
     })()
   }, [])
   console.log(state)
-  const { view } = state
+  const { view, _cats } = state
   return (
     <Layout>
       {
@@ -32,7 +32,10 @@ const App: FC = (): JSX.Element => {
               <Loading/>
             ),
             [Views.HOME]: (): JSX.Element => (
-              null
+              <Home
+                setView={setView}
+                cats={_cats}
+              />
             )
           }[view]())
         )()
